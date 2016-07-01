@@ -1,5 +1,7 @@
 # :bulb: Wykop - #wyzwanie #naukaprogramowania
 
+[![Join the chat at https://gitter.im/qofnaught/wykop_wyzwanie_naukaprogramowania](https://badges.gitter.im/qofnaught/wykop_wyzwanie_naukaprogramowania.svg)](https://gitter.im/qofnaught/wykop_wyzwanie_naukaprogramowania?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Pull requesty z sugestiami mile widziane
 
 ### :sparkles: Ogólne informacje

@@ -31,7 +31,7 @@ Załóżmy, że w podanym katalogu znajduje się 12 plików:
 1 z rozszerzeniem  .zip o rozmiarze   43131B
 ```
 
-Rozwiązanie powinno zapisać do podanego pliku następujące dane(bez pierwszej
+Rozwiązanie powinno zapisać do podanego pliku następujące dane (bez pierwszej
 linii, służy ona jedynie przedstawieniu szerokości kolumn, 5-15-60):
 
 ```
@@ -48,10 +48,46 @@ linii, służy ona jedynie przedstawieniu szerokości kolumn, 5-15-60):
 sprawdzanie, czy pliki i podkatalogi danego katalogu zmieniły się od ostatniego
 zapisu do bazy - nawet poza #wyzwaniepython ;-). Do ustalenia schemat bazy.~~
 
+  `./prog nazwa_katalogu nazwa_bazy`
+
+Zapisanie danych o obiektach z katalogu podanego jako pierwszy argument do bazy
+danych **SQLite** o nazwie podanej jako drugi argument z następującymi tabelami:
+
+#### objects - tabela z wszystkimi obiektami znajdującymi się w podanym katalogu oraz on sam
+```
+|         objects         |
+---------------------------
+| id | path | type | size |
+```
+* **id** - unikalne id
+* **path** - ścieżka rozpoczynająca się od katalogu podanego jako argument dla programu
+* **type** - `f` plik, `d` katalog, `o` inny (symlink itp.)
+* **size** - rozmiar obiektu, w przypadku katalogów suma rozmiarów jego elementów
+
+#### cardinality - tabela zawierająca liczbę elementów danego katalogu
+```
+|      cardinality     |
+------------------------
+| id | nbr_of_elements |
+```
+* **id** - **id** katalogu z tabeli **objects**
+* **nbr_of_elements** - liczba elementów w danym katalogu (rekurencyjnie wszystkich plików i katalogów)
+
+#### checksums - tabela zawierająca sumę kontrolną MD5 danego pliku
+```
+|       checksums      |
+------------------------
+| id |     checksum    |
+```
+* **id** - **id** pliku z tabeli **objects**
+* **checksum** - suma kontrolna MD5
+
 ===
 
-### Przydatne biblioteki:
-* SQLAlchemy
+### Przydatne linki:
+* [SQLite](https://www.sqlite.org/)
+* [SQLAlchemy](http://www.sqlalchemy.org/)
+* [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
 
 ### Czas na wykonanie
 **1 tydzień, do 27.07.2016**
